@@ -34,6 +34,13 @@
 		</div>
 		
 		<div>
+			{{ Form::label('password_confirmation', 'Password Confirm:   ') }}
+			{{ Form::text('password_confirmation')}}
+			{{$errors->first('password_confirmation');}}
+	
+		</div>
+		
+		<div>
 			{{ Form::label('firstname', 'First Name: ') }}
 			{{ Form::text('firstname')}}
 			{{$errors->first('firstname');}}

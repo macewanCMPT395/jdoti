@@ -30,13 +30,17 @@ class UserController extends \BaseController {
 	
 	public function store()
 	{
+		$input = Input::all();
 		
-		if( ! $user = $this->user->isValid($Input = Input::all()))
+		if( ! $user = $this->user->fill($input)->isValid())
 		{
 			return Redirect::back()->withInput()->withErrors($this->user->messages);
 		}
 		
-		$this->user->create($input);
+		$this->user->hashPassword($input['password']);
+		unset($this->user->password_confirmation);
+		
+		$this->user->save();
 
 		//$user = new User;
 		//$user->username = Input::get('username');
