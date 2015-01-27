@@ -5,6 +5,6 @@
 @stop
 
 @section('content')
-	<h1>Hello, {{$user->username}}</h1>
+	<h1>Profile of {{$user->username}}</h1>
 
 @stop

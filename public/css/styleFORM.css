@@ -17,3 +17,15 @@
 			line-height: 28px;
 			
 		}
+		
+		div.errors{
+			color: red;
+			font-size:12px;
+		
+		}
+		
+		h1.center{
+			text-align:center;
+			padding-right:3%;
+		
+		}

@@ -1,6 +1,7 @@
 <?php
 
 class UserController extends \BaseController {
+	
 	protected $user;
 	
 	public function __construct(User $user){
@@ -15,6 +16,7 @@ class UserController extends \BaseController {
 		
 	}
 	
+	//Function 
 	public function show($username)
 	{
 		
@@ -25,6 +27,12 @@ class UserController extends \BaseController {
 	
 	public function create()
 	{
+        if (Auth::check())
+        {
+            // Redirect to homepage
+            return Redirect::to('/admin')->with('success', 'You are already logged in');
+        }
+
 		return View::make('user/create');
 	}
 	
@@ -41,16 +49,8 @@ class UserController extends \BaseController {
 		unset($this->user->password_confirmation);
 		
 		$this->user->save();
-
-		//$user = new User;
-		//$user->username = Input::get('username');
-		//$user->password = Hash::make('password');
-		//$user->firstname = Input::get('firstname');
-		//$user->surname = Input::get('surname');
-		//$user->email = Input::get('email');
-		//$user->save();
 		
-		return Redirect::route('user.index');
+		return Redirect::route('sessions.create');
 		
 	}
 };

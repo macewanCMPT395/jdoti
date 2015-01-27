@@ -1,9 +1,26 @@
 <?php 
 
-
+//For controlling creation of users
 Route::resource('user', 'UserController');
 
+//For controlling the home page routes
 Route::get('/', 'HomeController@index');
+
+//For giving /login a route to the session controller 
+Route::get('login', 'SessionsController@create');
+
+//For giving /logout a route to the session controller 
+Route::get('logout', 'SessionsController@destroy');
+
+//For managing logins and logouts
+Route::resource('sessions', 'SessionsController');
+
+//The admin page for sessions
+Route::get('admin', function()
+{
+	return 'Admin Page of '.Auth::user()->username;
+})->before('auth');
+
 
 //Route::get('user', 'UserController@index');
 

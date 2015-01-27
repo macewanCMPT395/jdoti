@@ -5,15 +5,16 @@
 @stop
 
 @section('content')
-	<h1>Welcome To Cactus</h1>
+	<h1 class="center">Welcome To Cactus</h1>
 	
 	<a href="{{URL::to('/user/create')}}">
-	<h2>New to Cactus? Join Today</h2>
+	<h2 class="center">New to Cactus? Join Today</h2>
 	</a>
 	
-	<a href="{{URL::to('/user')}}">
-	<h2>Existing User? Log in Here</h2>
+	<a href="{{URL::to('/login')}}">
+	<h2 class="center">Existing User? Log in Here</h2>
 	</a>
 	
 	
 @stop
+

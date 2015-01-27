@@ -18,6 +18,11 @@
 			min-height: 100%;   
 			position:relative;
 		}
+		
+		h1.center, h2.center{
+			text-align:center;
+		
+		}
 
 /********For Formating Main Content between head and foot************/
 
