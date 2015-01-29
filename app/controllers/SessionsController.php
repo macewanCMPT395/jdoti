@@ -20,7 +20,7 @@ class SessionsController extends \BaseController {
 		{
 			return Redirect::to('/admin');
 		}
-		return Redirect::back()->withInput()->with('badInfo', 'Plese Cheack Login Info');
+		return Redirect::back()->withInput()->with('badInfo', 'Either Username or Password is Wrong, Please try again.');
 	}
 	
 	//logs out and returns to login page

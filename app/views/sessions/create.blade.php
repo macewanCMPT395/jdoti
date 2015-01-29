@@ -26,6 +26,7 @@
 		<div> 
 			{{ Form::label('username', 'Username:  ') }}
 			{{ Form::text('username')}}
+		<div class="errors">{{Session::get('badInfo');}}</div>
 	
 		</div>
 		

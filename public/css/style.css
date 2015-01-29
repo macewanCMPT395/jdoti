@@ -32,21 +32,6 @@
 			line-height: 28px;
 		}
 		
-		
-
-/********For Formating links(general)************/
-		a:link	{
-			color: black;
-		}
-		a:visited	{
-			color: black;
-		}
-		a:active	{
-			color: black;
-		}
-
-
-
 
 /********For Formating navbar(images and words)************/	
 		#navbar{
@@ -92,4 +77,19 @@
 			padding: 0.25rem 9999rem;
 			margin-top: -80px;
 			text-indent: 20px;
+			list-style: none;
+
 		}
+		
+
+/********For Formating links(general)************/
+		a:link	{
+			color: black;
+		}
+		a:visited	{
+			color: black;
+		}
+		a:active	{
+			color: black;
+		}
+

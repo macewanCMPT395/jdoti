@@ -32,7 +32,8 @@ class UserController extends \BaseController {
             // Redirect to homepage
             return Redirect::to('/admin')->with('success', 'You are already logged in');
         }
-
+		
+		
 		return View::make('user/create');
 	}
 	
