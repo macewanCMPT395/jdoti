@@ -29,11 +29,12 @@ class UserController extends \BaseController {
 	{
         if (Auth::check())
         {
-            // Redirect to homepage
-            return Redirect::to('/admin')->with('success', 'You are already logged in');
+            // Redirect to admin if allready logged in
+			$currentuser = Auth::user()->username;
+			$url = '/sessions/'.$currentuser.'/edit';
+			return Redirect::to($url);
+            return Redirect::to($url)->with('success', 'You are already logged in');
         }
-		
-		
 		return View::make('user/create');
 	}
 	
@@ -54,4 +55,5 @@ class UserController extends \BaseController {
 		return Redirect::route('sessions.create');
 		
 	}
+
 };

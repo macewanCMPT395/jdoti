@@ -3,10 +3,36 @@
 class SessionsController extends \BaseController {
 	
 	//
+	public function admin()
+	{
+		
+		$currentuser = Auth::user()->username;
+		$url = '/sessions/'.$currentuser.'/edit';
+		return Redirect::to($url);
+	}
+	
+	
+	public function edit($id)
+	{
+		if(Auth::user()->username != $id){
+			return Redirect::to('/');
+		}
+		
+		$user = User::find($id);
+		return View::make('sessions.edit',  ['user' => $user]);
+	}
+	
+	
+	
 	public function create()
 	{
 		//Checking if loged in, gives admin page if true
-		if(Auth::check())return Redirect::to('/admin');
+		if(Auth::check())
+		{
+			$currentuser = Auth::user()->username;
+			$url = '/sessions/'.$currentuser.'/edit';
+			return Redirect::to($url);
+		}
 		
 		//Give login page otherwise
 		return View::make('sessions.create');
@@ -18,7 +44,9 @@ class SessionsController extends \BaseController {
 		
 		if(Auth::attempt(Input::only('username' , 'password')))
 		{
-			return Redirect::to('/admin');
+			$currentuser = Auth::user()->username;
+			$url = '/sessions/'.$currentuser.'/edit';
+			return Redirect::to($url);
 		}
 		return Redirect::back()->withInput()->with('badInfo', 'Either Username or Password is Wrong, Please try again.');
 	}
@@ -33,5 +61,6 @@ class SessionsController extends \BaseController {
 		
 	}
 	
+
 	
 }
