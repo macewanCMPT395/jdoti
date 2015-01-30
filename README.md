@@ -29,7 +29,7 @@ of communication.
   
 ####2.Get composer (if you dont have it) by running commands
         curl -sS https://getcomposer.org/installer | php
-        mv composer.phar /usr/local/bin/composer'(may require permissions)
+        mv composer.phar /usr/local/bin/composer    (may require permissions)
 
 ####3. Get working with commands
         cd cactus
