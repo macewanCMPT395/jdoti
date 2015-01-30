@@ -8,6 +8,7 @@ class UserController extends \BaseController {
 		$this->user = $user;
 	}
 	
+	//Gives a list of all users in that
 	public function index()
 	{
 
@@ -16,7 +17,7 @@ class UserController extends \BaseController {
 		
 	}
 	
-	//Function 
+	//Gives a profile page for any user given
 	public function show($username)
 	{
 		
@@ -25,6 +26,7 @@ class UserController extends \BaseController {
 		
 	}
 	
+	//For Creating a view of new user form
 	public function create()
 	{
         if (Auth::check())
@@ -38,6 +40,7 @@ class UserController extends \BaseController {
 		return View::make('user/create');
 	}
 	
+	//Takes new user form and saves to database. 
 	public function store()
 	{
 		$input = Input::all();
@@ -50,7 +53,7 @@ class UserController extends \BaseController {
 		$this->user->hashPassword($input['password']);
 		unset($this->user->password_confirmation);
 		
-		$user->update($input);
+		$this->user->save();
 		
 		return Redirect::route('sessions.create');
 		

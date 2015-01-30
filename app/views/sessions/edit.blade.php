@@ -15,6 +15,7 @@
 	{{Form::model($user, array('method' => 'PATCH', 'route' =>  array('sessions.update', $user->username)))}}
 		<div>Your Username: <b> {{ $user['username'] }} </div>
 		
+		
 		<div>
 			{{ Form::label('password', 'Password:   ') }}
 			{{ Form::password('password')}}
@@ -26,8 +27,8 @@
 			{{ Form::label('password_confirmation', 'Password Confirm:   ') }}
 			{{ Form::password('password_confirmation')}}
 			<div class="errors">{{$errors->first('password_confirmation');}}</div>
-	
 		</div>
+		<div class="errors">Only enter password fields if your changing your passsword!</div>
 		
 		<div>
 			{{ Form::label('firstname', 'First Name: ') }}
@@ -50,6 +51,7 @@
 		</div>
 		
 		<div>{{Form::submit('Update user Info') }}</div>
+		<div class="errors">{{Session::get('info');}}</div>
 	{{ Form::close() }}
 	</div>
 @stop

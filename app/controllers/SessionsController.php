@@ -17,17 +17,17 @@ class SessionsController extends \BaseController {
 	//editing session for logged in user to make access easier for user
 	public function admin()
 	{
-		
 		$currentuser = Auth::user()->username;
 		$url = '/sessions/'.$currentuser.'/edit';
 		return Redirect::to($url);
 	}
 	
-	//Brings in the editing form view
+	//Brings in the editing form view, 
+	//only allows access if authuser = requested user
 	public function edit($id)
 	{
-		if(Auth::user()->username != $id){
-			return Redirect::to('/');
+		if(Auth::user()['username'] != $id){
+			return Redirect::to('/')->with('info', 'You Dont have Access to that Page');
 		}
 		
 		$user = Auth::user();
@@ -68,22 +68,30 @@ class SessionsController extends \BaseController {
 	public function destroy()
 	{
 		Auth::logout();
-		
 		return Redirect::route('sessions.create');
-		
-		
 	}
 	
 	public function update($id)
 	{
-		$user = new User;
-		$user = Input::all();
-		if ( ! $user->isValid(Input::all())){
-			return Redirect::back()->withInput()->withErrors($this->user->messages);
+		//Finds user from username
+		$user = User::find( Auth::user()->id );
+		$input = Input::all();
+		unset($input['_method']);
+		unset($input['_token']);
+		$validation = Validator::make($input, User::$rules2);
+		
+		//Checks input for validation
+		if ( ! $validation->passes()){
+			return Redirect::back()->withInput()->withErrors($validation);
 		}
-				
-		$user->touch(Input::all());
-		return Redirect::route('admin');
+		
+		$input['password'] = Hash::make($input['password']);
+		unset($input['password_confirmation']);
+		
+		$user->update($input);
+		$currentuser = Auth::user()->username;
+			$url = '/sessions/'.$currentuser.'/edit';
+			return Redirect::to($url)->with('info', 'Succesfully Updated Info');
 
 	}
 	
