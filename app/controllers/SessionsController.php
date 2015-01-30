@@ -57,9 +57,8 @@ class SessionsController extends \BaseController {
 		
 		if(Auth::attempt(Input::only('username' , 'password')))
 		{
-			$currentuser = Auth::user()->username;
-			$url = '/sessions/'.$currentuser.'/edit';
-			return Redirect::to($url);
+			return Redirect::to('/');
+
 		}
 		return Redirect::back()->withInput()->with('badInfo', 'Either Username or Password is Wrong, Please try again.');
 	}

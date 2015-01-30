@@ -3,11 +3,10 @@
 class HomeController extends BaseController {
 
 
-	// EXAMPLE: Route::get('/', 'HomeController@showWelcome');
-
+	//Give the Home Page
 	public function index()
 	{
-		//Checking if loged in, gives admin page if true
+		//Checking if loged in, can gives differnt page if true
 		if(Auth::check())
 		{
 			return View::make('hello');
@@ -18,6 +17,12 @@ class HomeController extends BaseController {
 		
 		return View::make('hello');
 		
+	}
+	
+	//Give the About Page
+	public function about()
+	{
+		return View::make('about');
 	}
 
 }

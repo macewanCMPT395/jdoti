@@ -29,6 +29,7 @@ Default html loaded for most pages. Has content for navbar and footer
 					<li class="content"> <a href="{{URL::to('/logout')}}">Logout</li></a>
 				@else 
 					<li class="content"> <a href="{{URL::to('/login')}}">Login</li></a>
+					<li class="content"> <a href="{{URL::to('/user/create')}}">Join Cactus!</li></a>
 				@endif
 			</ul>
 			

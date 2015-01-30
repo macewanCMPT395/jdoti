@@ -12,6 +12,7 @@
 @stop
 
 @section('content')
+	<div class="errors">{{Session::get('info');}}</div>
 
 	<h1 class="center">Login!</h1>
 	<div class="info">

@@ -6,6 +6,8 @@ Route::resource('user', 'UserController');
 //For controlling the home page routes
 Route::get('/', 'HomeController@index');
 
+Route::get('/about', 'HomeController@about');
+
 //For giving /login a route to the session controller 
 Route::get('login', 'SessionsController@create');
 

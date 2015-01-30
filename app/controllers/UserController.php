@@ -55,7 +55,7 @@ class UserController extends \BaseController {
 		
 		$this->user->save();
 		
-		return Redirect::route('sessions.create');
+		return Redirect::route('sessions.create')->with('info', 'User Created, Log in Now');
 		
 	}
 
