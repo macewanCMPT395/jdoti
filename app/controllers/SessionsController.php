@@ -1,8 +1,20 @@
 <?php
 
+
+//Controls the logging in and logging out of website along
+//with some redirects for certain website calls(admin)
+//Also controls the editing of user information once logged in
 class SessionsController extends \BaseController {
+		
+	protected $user;
 	
-	//
+	public function __construct(User $user){
+		$this->user = $user;
+	}
+	
+	
+	//Redirects all /admin calls to an 
+	//editing session for logged in user to make access easier for user
 	public function admin()
 	{
 		
@@ -11,19 +23,20 @@ class SessionsController extends \BaseController {
 		return Redirect::to($url);
 	}
 	
-	
+	//Brings in the editing form view
 	public function edit($id)
 	{
 		if(Auth::user()->username != $id){
 			return Redirect::to('/');
 		}
 		
-		$user = User::find($id);
-		return View::make('sessions.edit',  ['user' => $user]);
+		$user = Auth::user();
+		return View::make('sessions.edit')->with('user', $user);
 	}
 	
 	
-	
+	//Gives a login page to user
+	//If logged in redirects to admin page. 
 	public function create()
 	{
 		//Checking if loged in, gives admin page if true
@@ -59,6 +72,19 @@ class SessionsController extends \BaseController {
 		return Redirect::route('sessions.create');
 		
 		
+	}
+	
+	public function update($id)
+	{
+		$user = new User;
+		$user = Input::all();
+		if ( ! $user->isValid(Input::all())){
+			return Redirect::back()->withInput()->withErrors($this->user->messages);
+		}
+				
+		$user->touch(Input::all());
+		return Redirect::route('admin');
+
 	}
 	
 

@@ -1,5 +1,10 @@
 <!doctype html>
 
+<!--
+Default html loaded for most pages. Has content for navbar and footer
+@yeild('css') for adding css file links
+@yeild('content') for adding content on page
+-->
 <html>
 	<head>
 		<meta charset="utf-8">

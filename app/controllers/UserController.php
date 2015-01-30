@@ -41,7 +41,7 @@ class UserController extends \BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		
+
 		if( ! $user = $this->user->fill($input)->isValid())
 		{
 			return Redirect::back()->withInput()->withErrors($this->user->messages);
@@ -50,7 +50,7 @@ class UserController extends \BaseController {
 		$this->user->hashPassword($input['password']);
 		unset($this->user->password_confirmation);
 		
-		$this->user->save();
+		$user->update($input);
 		
 		return Redirect::route('sessions.create');
 		

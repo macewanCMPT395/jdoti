@@ -12,13 +12,8 @@
 	
 	<div class="info2">
 	
-	{{Form::model(['route' => 'sessions.update']) }}
-		<div> 
-			{{ Form::label('username', 'Username:  ') }}
-			{{ Form::text('username')}}
-			<div class="errors">{{$errors->first('username');}}</div>
-	
-		</div>
+	{{Form::model($user, array('method' => 'PATCH', 'route' =>  array('sessions.update', $user->username)))}}
+		<div>Your Username: <b> {{ $user['username'] }} </div>
 		
 		<div>
 			{{ Form::label('password', 'Password:   ') }}
@@ -54,7 +49,7 @@
 			<div class="errors">{{$errors->first('email');}}</div>
 		</div>
 		
-		<div>{{Form::submit('Create User') }}</div>
+		<div>{{Form::submit('Update user Info') }}</div>
 	{{ Form::close() }}
 	</div>
 @stop
