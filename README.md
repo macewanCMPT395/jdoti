@@ -3,6 +3,7 @@
 ##----Project Cactus (aka. CMPT 395 project 1)-----
 
 Created By: Josh Dotinga
+
 Contact: dotingaj@mymacewan.ca
     
 JoshDoti 2015
@@ -16,7 +17,7 @@ built on the laravel framework for php.
 The App features a simple login along with way to create and update
 a profile/user. Users can also access the profiles of other users.
 
-The app is called CACTUS and is a platform for connecting to user. 
+The app is called CACTUS. Cactus is a platform for connecting users. 
 Users would(theoretically) send "pricks" to each other as a form 
 of communication. 
 
@@ -30,7 +31,7 @@ of communication.
         curl -sS https://getcomposer.org/installer | php
         mv composer.phar /usr/local/bin/composer'(may require permissions)
 
-####3. Install laravel with commands
+####3. Get working with commands
         cd cactus
         composer install --dev
         
