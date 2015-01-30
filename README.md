@@ -1,24 +1,30 @@
-# cmpt395ProjectJOSH
+#Josh D CMPT395 Project 1 (CACTUS)
 
 ##----Project Cactus (aka. CMPT 395 project 1)-----
-###Created By: Josh Dotinga
-###Contact: dotingaj@mymacewan.ca
+
+Created By: Josh Dotinga
+Contact: dotingaj@mymacewan.ca
     
-    JoshDoti 2015
+JoshDoti 2015
 
 ##----Application------
 requirements: PHP
+
 This appliaction is a simple CRUD(create read update delete) app
 built on the laravel framework for php. 
 
 The App features a simple login along with way to create and update
-a profile/user. Users can also access the profiles of other users. 
+a profile/user. Users can also access the profiles of other users.
+
+The app is called CACTUS and is a platform for connecting to user. 
+Users would(theoretically) send "pricks" to each other as a form 
+of communication. 
 
 ##----To get install and run (from unix)------
 ****An empty sqllite database is included with install****
 
 ####1.From terminal in directrory of your choice Clone git repo with
-  'git clone https://github.com/macewanCMPT395/jdoti.git cactus'
+        git clone https://github.com/macewanCMPT395/jdoti.git cactus
   
 ####2.Get composer (if you dont have it) by running commands
         curl -sS https://getcomposer.org/installer | php
@@ -29,10 +35,10 @@ a profile/user. Users can also access the profiles of other users.
         composer install --dev
         
 ####4.Run php web app with command
-        `php artisan serve`
+        php artisan serve
         
 ####5.Access website from your favorite web browser at
-        `http://localhost:8000/`
+        http://localhost:8000/
         
 ****No need to seed database, An empty sqllite database is included***
 
