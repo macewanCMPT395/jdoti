@@ -9,7 +9,7 @@ Contact: dotingaj@mymacewan.ca
 JoshDoti 2015
 
 ##----Application------
-requirements: PHP
+requirements: PHP  MYCRYPT(for laravel)
 
 This appliaction is a simple CRUD(create read update delete) app
 built on the laravel framework for php. 
