@@ -11,6 +11,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	
 	protected $fillable = ['username', 'password', 'password_confirmation', 'firstname', 'surname', 'email'];
 	
+	//Rules for creating a user
 	public static $rules = 	[
 		'username'=> 'required | unique:users',
 		'password'=> 'required | min:5 | confirmed',
@@ -19,15 +20,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'surname'=> 'required',
 		'email'=> 'required | email | unique:users'
 		];
-		
+	
+	//Rules for updating a user
 	public static $rules2 = 	[
 		'password'=> 'sometimes | required | min:5 | confirmed',
 		'password_confirmation' => 'sometimes | required | min:5',
-		'firstname'=> 'sometimes | required',
-		'surname'=> 'sometimes | required',
-		'email'=> 'sometimes | required | email '
+		'firstname'=> 'required',
+		'surname'=> 'required',
+		'email'=> 'equired | email '
 		];
-		
+	
 	public $messages;
 	
 

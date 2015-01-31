@@ -1,5 +1,10 @@
 <?php
 
+
+/*The user controller is for the creation of new users
+ *along with providing profiles of differnt users 
+ * accessible at /user/{username} and /user    */
+ 
 class UserController extends \BaseController {
 	
 	protected $user;

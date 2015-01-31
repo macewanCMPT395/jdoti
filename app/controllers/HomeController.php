@@ -1,5 +1,9 @@
 <?php
 
+/*The Home controller serves the home and about pages by calling
+ *  '/' and '/about'. */
+ 
+ 
 class HomeController extends BaseController {
 
 

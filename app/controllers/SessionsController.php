@@ -1,9 +1,17 @@
 <?php
 
 
-//Controls the logging in and logging out of website along
-//with some redirects for certain website calls(admin)
-//Also controls the editing of user information once logged in
+/*Controls the logging in and logging out of website along
+ * with some redirects for certain website calls(admin)
+ * also controls the editing of user information once logged in
+* calling /logout will route to here and logout
+* calling /login will route to here and give login page
+* calling /admin will route to here and give the edit page of logged 
+* in user. 
+* calling /session/{username}/edit will also give admin user page
+* only if {username} is the authuser
+* also has function for updating user profiles if called from a form*/
+
 class SessionsController extends \BaseController {
 		
 	protected $user;
@@ -72,21 +80,27 @@ class SessionsController extends \BaseController {
 	
 	public function update($id)
 	{
-		//Finds user from username
+		//Finds user from username to get user that is being updated
 		$user = User::find( Auth::user()->id );
 		$input = Input::all();
+		
+		//unset unneeded fields from form
 		unset($input['_method']);
 		unset($input['_token']);
+		
+		//validate inputed information
 		$validation = Validator::make($input, User::$rules2);
 		
-		//Checks input for validation
+		//Checks input for validation to make sure feilds are not blank
 		if ( ! $validation->passes()){
 			return Redirect::back()->withInput()->withErrors($validation);
 		}
 		
+		//hashes the password to protect it
 		$input['password'] = Hash::make($input['password']);
 		unset($input['password_confirmation']);
 		
+		//Updated validated and hashed user information to User model
 		$user->update($input);
 		$currentuser = Auth::user()->username;
 			$url = '/sessions/'.$currentuser.'/edit';

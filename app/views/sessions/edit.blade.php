@@ -8,14 +8,16 @@
 @stop
 
 @section('content')
-	<h1 class="center">Edit Your Info!</h1>
+	<h1 class="info2">Edit Your Info!</h1>
+	<br>
 	
-	<div class="info2">
+	<div class="info4">
 	
 	{{Form::model($user, array('method' => 'PATCH', 'route' =>  array('sessions.update', $user->username)))}}
-		<div>Your Username: <b> {{ $user['username'] }} </div>
+		<div class="errors">Username: <br> </div> <div>{{ $user['username'] }} </div>
 		
-		
+		<div class="errors">No fields should be left blank!</div>
+
 		<div>
 			{{ Form::label('password', 'Password:   ') }}
 			{{ Form::password('password')}}
@@ -28,7 +30,6 @@
 			{{ Form::password('password_confirmation')}}
 			<div class="errors">{{$errors->first('password_confirmation');}}</div>
 		</div>
-		<div class="errors">Only enter password fields if your changing your passsword!</div>
 		
 		<div>
 			{{ Form::label('firstname', 'First Name: ') }}

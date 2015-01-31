@@ -118,5 +118,12 @@
 			margin: 0 auto; 
 			width: 600px;
 		}
+		.info4{
+			text-align:left;
+			width:400px;
+			margin: 0 auto; 
+			font-weight:bold;
+			padding-left:250px;
+		}
 
 
